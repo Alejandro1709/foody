@@ -1,0 +1,23 @@
+{
+  "name": "foody",
+  "version": "1.0.0",
+  "description": "App to order food online",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alejandro1709/foody.git"
+  },
+  "author": "Alejandro La Rosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alejandro1709/foody/issues"
+  },
+  "homepage": "https://github.com/Alejandro1709/foody#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
+}
