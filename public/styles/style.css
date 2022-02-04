@@ -24,6 +24,8 @@ html {
   color: white;
   font-size: 1rem;
   background-color: #303030;
+  position: sticky;
+  top: 0;
 }
 
 nav {
@@ -51,4 +53,33 @@ nav ul li {
 nav ul li:hover {
   background-color: white;
   color: #303030;
+}
+
+main {
+  font-size: 2rem;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%;
+  max-width: 90%; */
+  border: 1px solid #eeee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.inner-card {
+  margin: 2rem;
+}
+
+.inner-card .logo {
+  border-radius: 5px;
+  width: 100%;
 }
