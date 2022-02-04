@@ -26,7 +26,7 @@ const restaurantSchema = new mongoose.Schema({
 });
 
 restaurantSchema.pre('save', function () {
-  this.restaurantSlug = slugify(this.restaurantSlug);
+  this.restaurantSlug = slugify(this.restaurantName);
 });
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);
