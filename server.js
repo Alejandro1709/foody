@@ -34,6 +34,23 @@ app.get('/api/v1/restaurants', (req, res) => {
   res.status(200).json(restaurants);
 });
 
+app.get('/api/v1/restaurants/:id', (req, res) => {
+  let data = fs.readFileSync(
+    path.join(__dirname, '/data/restaurants.json'),
+    'utf8'
+  );
+
+  let restaurants = JSON.parse(data);
+
+  let singleRestaurant = restaurants.find((r) => r.id === req.params.id);
+
+  if (!singleRestaurant) {
+    return res.status(404).json({ message: 'This restaurant does not exists' });
+  }
+
+  res.status(200).json(singleRestaurant);
+});
+
 // not found route
 app.get('*', (req, res) => {
   res.status(404).json({ message: 'Page Not Found' });
