@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "restaurantName": "Pizza Hut",
+    "restaurantSlug": "pizza-hut",
+    "restaurantCategory": "Fast Food",
+    "restaurantWebsite": "https://www.pizzahut.com.pe/",
+    "restaurantItems": [
+      {
+        "id": "1a",
+        "itemTitle": "Pepperoni Pizza",
+        "itemImageUrl": "",
+        "itemPrice": 17.25,
+        "itemDesc": "Rica pizza de pepperoni acompañada con una gaseosa a su elección."
+      }
+    ]
+  }
+]
