@@ -57,11 +57,14 @@ nav ul {
   color: #303030;
 }
 
+<<<<<<< HEAD
 .nav-link.active {
   background-color: white;
   color: #303030;
 }
 
+=======
+>>>>>>> 19f1c92fdfbeaeb727a2bbfc038f01d89eff6f6c
 main {
   font-size: 2rem;
 }
@@ -69,7 +72,10 @@ main {
 .restaurant-list {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   margin: 2rem;
+=======
+>>>>>>> 19f1c92fdfbeaeb727a2bbfc038f01d89eff6f6c
 }
 
 .restaurant-card {
@@ -79,10 +85,15 @@ main {
   /* width: 100%;
   max-width: 90%; */
   border: 1px solid #eeee;
+<<<<<<< HEAD
   background-color: #f5f6fa;
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
+=======
+  border-radius: 5px;
+  overflow: hidden;
+>>>>>>> 19f1c92fdfbeaeb727a2bbfc038f01d89eff6f6c
 }
 
 .inner-card {
@@ -90,8 +101,12 @@ main {
 }
 
 .inner-card .logo {
+<<<<<<< HEAD
   height: 360px;
   border-radius: 5px;
   object-fit: cover;
+=======
+  border-radius: 5px;
+>>>>>>> 19f1c92fdfbeaeb727a2bbfc038f01d89eff6f6c
   width: 100%;
 }
