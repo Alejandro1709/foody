@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const restaurantSchema = new mongoose.Schema({
   restaurantName: {
@@ -22,6 +23,10 @@ const restaurantSchema = new mongoose.Schema({
     required: [true, 'Please provide a website for the restaurant'],
     trim: true,
   },
+});
+
+restaurantSchema.pre('save', function () {
+  this.restaurantSlug = slugify(this.restaurantSlug);
 });
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);
