@@ -5,9 +5,12 @@ const path = require('path');
 const fs = require('fs');
 const { v4: uuid } = require('uuid');
 const methodOverride = require('method-override');
+const connectDB = require('./config/connectDB');
 const app = express();
 
 dotenv.config();
+
+connectDB();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
