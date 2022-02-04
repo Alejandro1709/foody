@@ -4,12 +4,14 @@ const dotenv = require('dotenv');
 const path = require('path');
 const fs = require('fs');
 const { v4: uuid } = require('uuid');
+const methodOverride = require('method-override');
 const app = express();
 
 dotenv.config();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'development') {
@@ -72,7 +74,7 @@ app.post('/api/v1/restaurants/', (req, res) => {
   );
 });
 
-app.put('/api/v1/restaurants/:id', (req, res) => {
+app.patch('/api/v1/restaurants/:id', (req, res) => {
   let singleRestaurant = restaurants.find((r) => r.id === req.params.id);
 
   if (!singleRestaurant) {
@@ -84,6 +86,8 @@ app.put('/api/v1/restaurants/:id', (req, res) => {
   singleRestaurant.restaurantName = restaurantName;
   singleRestaurant.restaurantCategory = restaurantCategory;
   singleRestaurant.restaurantWebsite = restaurantWebsite;
+
+  res.redirect('/');
 });
 
 // not found route
