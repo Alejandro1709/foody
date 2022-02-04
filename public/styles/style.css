@@ -24,6 +24,8 @@ html {
   color: white;
   font-size: 1rem;
   background-color: #303030;
+  position: sticky;
+  top: 0;
 }
 
 nav {
@@ -38,17 +40,56 @@ nav ul {
   list-style: none;
 }
 
-nav ul li {
+.nav-link {
   display: inline-block;
   font-size: 1.5rem;
   border: 1px solid white;
   padding: 1rem;
   border-radius: 5px;
+  text-decoration: none;
+  color: white;
   cursor: pointer;
   transition: all 0.1s;
 }
 
-nav ul li:hover {
+.nav-link:hover {
   background-color: white;
   color: #303030;
+}
+
+.nav-link.active {
+  background-color: white;
+  color: #303030;
+}
+
+main {
+  font-size: 2rem;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%;
+  max-width: 90%; */
+  border: 1px solid #eeee;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.inner-card {
+  margin: 2rem;
+}
+
+.inner-card .logo {
+  height: 360px;
+  border-radius: 5px;
+  object-fit: cover;
+  width: 100%;
 }
