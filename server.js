@@ -24,7 +24,7 @@ let restaurants = JSON.parse(
 );
 
 app.get('/', (req, res) => {
-  res.render('home');
+  res.render('restaurants');
 });
 
 // routes
@@ -63,6 +63,21 @@ app.post('/api/v1/restaurants/', (req, res) => {
       res.status(201).json(newRestaurant);
     }
   );
+  res.redirect('/');
+});
+
+app.put('/api/v1/restaurants/:id', (req, res) => {
+  let singleRestaurant = restaurants.find((r) => r.id === req.params.id);
+
+  if (!singleRestaurant) {
+    return res.status(404).json({ message: 'This restaurant does not exists' });
+  }
+
+  let { restaurantName, restaurantCategory, restaurantWebsite } = req.body;
+
+  singleRestaurant.restaurantName = restaurantName;
+  singleRestaurant.restaurantCategory = restaurantCategory;
+  singleRestaurant.restaurantWebsite = restaurantWebsite;
 });
 
 // not found route
