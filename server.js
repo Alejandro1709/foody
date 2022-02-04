@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
 const fs = require('fs');
+const { v4: uuid } = require('uuid');
 const app = express();
 
 dotenv.config();
@@ -18,30 +19,20 @@ if (process.env.NODE_ENV === 'development') {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
+let restaurants = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '/data/restaurants.json'))
+);
+
 app.get('/', (req, res) => {
   res.render('home');
 });
 
 // routes
 app.get('/api/v1/restaurants', (req, res) => {
-  let data = fs.readFileSync(
-    path.join(__dirname, '/data/restaurants.json'),
-    'utf8'
-  );
-
-  let restaurants = JSON.parse(data);
-
   res.status(200).json(restaurants);
 });
 
 app.get('/api/v1/restaurants/:id', (req, res) => {
-  let data = fs.readFileSync(
-    path.join(__dirname, '/data/restaurants.json'),
-    'utf8'
-  );
-
-  let restaurants = JSON.parse(data);
-
   let singleRestaurant = restaurants.find((r) => r.id === req.params.id);
 
   if (!singleRestaurant) {
@@ -49,6 +40,29 @@ app.get('/api/v1/restaurants/:id', (req, res) => {
   }
 
   res.status(200).json(singleRestaurant);
+});
+
+app.post('/api/v1/restaurants/', (req, res) => {
+  let newRestaurant = {
+    id: uuid(),
+    restaurantName: 'Bembos',
+    restaurantSlug: 'bembos',
+    restaurantCategory: 'Fast Food',
+    restaurantWebsite: 'https://www.bembos.com.pe/',
+  };
+
+  restaurants.push(newRestaurant);
+
+  fs.writeFile(
+    path.join(__dirname, '/data/restaurants.json'),
+    JSON.stringify(restaurants),
+    (err) => {
+      if (err) {
+        console.error(err);
+      }
+      res.status(201).json(newRestaurant);
+    }
+  );
 });
 
 // not found route

@@ -1,26 +1,9 @@
 [
   {
-    "id": "1",
-    "restaurantName": "Pizza Hut",
-    "restaurantSlug": "pizza-hut",
+    "id": "008d5bec-d8e2-4fa5-8786-3bf1a4b04350",
+    "restaurantName": "Bembos",
+    "restaurantSlug": "bembos",
     "restaurantCategory": "Fast Food",
-    "restaurantWebsite": "https://www.pizzahut.com.pe/",
-    "restaurantItems": [
-      {
-        "id": "1a",
-        "itemTitle": "Pepperoni Pizza",
-        "itemImageUrl": "",
-        "itemPrice": 17.25,
-        "itemDesc": "Rica pizza de pepperoni acompañada con una gaseosa a su elección."
-      }
-    ]
-  },
-  {
-    "id": "2",
-    "restaurantName": "Pardos Chicken",
-    "restaurantSlug": "pardos-chicken",
-    "restaurantCategory": "Fast Food",
-    "restaurantWebsite": "https://www.pardoschicken.pe/",
-    "restaurantItems": []
+    "restaurantWebsite": "https://www.bembos.com.pe/"
   }
 ]
