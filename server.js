@@ -43,12 +43,19 @@ app.get('/api/v1/restaurants/:id', (req, res) => {
 });
 
 app.post('/api/v1/restaurants/', (req, res) => {
+  let {
+    restaurantName,
+    restaurantSlug,
+    restaurantCategory,
+    restaurantWebsite,
+  } = req.body;
+
   let newRestaurant = {
     id: uuid(),
-    restaurantName: 'Bembos',
-    restaurantSlug: 'bembos',
-    restaurantCategory: 'Fast Food',
-    restaurantWebsite: 'https://www.bembos.com.pe/',
+    restaurantName,
+    restaurantSlug,
+    restaurantCategory,
+    restaurantWebsite,
   };
 
   restaurants.push(newRestaurant);
@@ -60,10 +67,9 @@ app.post('/api/v1/restaurants/', (req, res) => {
       if (err) {
         console.error(err);
       }
-      res.status(201).json(newRestaurant);
+      res.redirect('/');
     }
   );
-  res.redirect('/');
 });
 
 app.put('/api/v1/restaurants/:id', (req, res) => {

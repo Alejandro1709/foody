@@ -5,5 +5,12 @@
     "restaurantSlug": "bembos",
     "restaurantCategory": "Fast Food",
     "restaurantWebsite": "https://www.bembos.com.pe/"
+  },
+  {
+    "id": "e14eed5b-b117-4e92-ad50-abdb718d3d3b",
+    "restaurantName": "Pizza Hut",
+    "restaurantSlug": "pizza-hut",
+    "restaurantCategory": "Fast Food",
+    "restaurantWebsite": "https://www.pizzahut.com.pe/"
   }
 ]
