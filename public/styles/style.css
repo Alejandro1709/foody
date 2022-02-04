@@ -69,6 +69,7 @@ main {
 .restaurant-list {
   display: flex;
   flex-direction: column;
+  margin: 2rem;
 }
 
 .restaurant-card {
@@ -78,6 +79,7 @@ main {
   /* width: 100%;
   max-width: 90%; */
   border: 1px solid #eeee;
+  background-color: #f5f6fa;
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;

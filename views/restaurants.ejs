@@ -38,42 +38,21 @@
     <main>
       <!-- START LIST -->
       <div class="restaurant-list">
-        <!-- START CARD -->
-        <article class="restaurant-card">
-          <div class="inner-card">
-            <img
-              class="logo"
-              src="https://buzzbinpadillaco.com/wp-content/uploads/2013/07/Pizza-Hut-logo.jpg"
-              alt="Pizza Hut"
-            />
-            <h2>Pizza Hut</h2>
-            <p>No one outpizzas the hut</p>
-          </div>
-        </article>
-        <!-- START CARD -->
-        <article class="restaurant-card">
-          <div class="inner-card">
-            <img
-              class="logo"
-              src="https://buzzbinpadillaco.com/wp-content/uploads/2013/07/Pizza-Hut-logo.jpg"
-              alt="Pizza Hut"
-            />
-            <h2>Pizza Hut</h2>
-            <p>No one outpizzas the hut</p>
-          </div>
-        </article>
-        <!-- START CARD -->
-        <article class="restaurant-card">
-          <div class="inner-card">
-            <img
-              class="logo"
-              src="https://buzzbinpadillaco.com/wp-content/uploads/2013/07/Pizza-Hut-logo.jpg"
-              alt="Pizza Hut"
-            />
-            <h2>Pizza Hut</h2>
-            <p>No one outpizzas the hut</p>
-          </div>
-        </article>
+        <% for (let restaurant of restaurants) { %>
+        <a href="/details">
+          <article class="restaurant-card">
+            <div class="inner-card">
+              <img
+                class="logo"
+                src="https://buzzbinpadillaco.com/wp-content/uploads/2013/07/Pizza-Hut-logo.jpg"
+                alt="Pizza Hut"
+              />
+              <h2><%= restaurant.restaurantName %></h2>
+              <p><%= restaurant.restaurantCategory %></p>
+            </div>
+          </article>
+        </a>
+        <% } %>
       </div>
       <!-- END LIST -->
     </main>
