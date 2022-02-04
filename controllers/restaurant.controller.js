@@ -53,3 +53,47 @@ exports.createRestaurants = async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 };
+
+//PATCH (update) a single restaurant
+exports.updateRestaurant = async (req, res) => {
+  let { restaurantName, restaurantCategory, restaurantWebsite } = req.body;
+
+  try {
+    const restaurant = await Restaurant.findOneAndUpdate(
+      { slug: req.params.slug },
+      { restaurantName, restaurantCategory, restaurantWebsite },
+      { new: true, runValidators: true }
+    );
+
+    if (!restaurant) {
+      return res
+        .status(404)
+        .json({ message: 'This Restaurant Does Not Exists' });
+    }
+
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// DELETE a single restaurant
+exports.deleteRestaurant = async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findOneAndRemove({
+      slug: req.params.slug,
+    });
+
+    if (!restaurant) {
+      return res
+        .status(404)
+        .json({ message: 'This Restaurant Does Not Exists' });
+    }
+
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};

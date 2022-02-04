@@ -8,4 +8,8 @@ router.get('/:slug', restaurantController.getSingleRestaurant);
 
 router.post('/new', restaurantController.createRestaurants);
 
+router.patch('/:slug', restaurantController.updateRestaurant);
+
+router.delete('/:slug', restaurantController.deleteRestaurant);
+
 module.exports = router;
