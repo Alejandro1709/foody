@@ -14,5 +14,13 @@
         "itemDesc": "Rica pizza de pepperoni acompañada con una gaseosa a su elección."
       }
     ]
+  },
+  {
+    "id": "2",
+    "restaurantName": "Pardos Chicken",
+    "restaurantSlug": "pardos-chicken",
+    "restaurantCategory": "Fast Food",
+    "restaurantWebsite": "https://www.pardoschicken.pe/",
+    "restaurantItems": []
   }
 ]
