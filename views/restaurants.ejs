@@ -39,7 +39,7 @@
       <!-- START LIST -->
       <div class="restaurant-list">
         <% for (let restaurant of restaurants) { %>
-        <a href="/details">
+        <a href="/<%= restaurant.restaurantSlug %>">
           <article class="restaurant-card">
             <div class="inner-card">
               <img

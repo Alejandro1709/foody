@@ -38,6 +38,21 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.get('/:slug', async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findOne({
+      restaurantSlug: req.params.slug,
+    });
+
+    res.render('restaurant', {
+      restaurant,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 // not found route
 app.get('*', (req, res) => {
   res.status(404).json({ message: 'Page Not Found' });
