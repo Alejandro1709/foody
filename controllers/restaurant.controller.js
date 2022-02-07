@@ -1,4 +1,5 @@
 const Restaurant = require('../models/Restaurant');
+const FoodItem = require('../models/FoodItem');
 
 // GET all restaurants
 exports.getAllRestaurants = async (req, res) => {
@@ -21,7 +22,9 @@ exports.getAllRestaurants = async (req, res) => {
 //GET single restaurant
 exports.getSingleRestaurant = async (req, res) => {
   try {
-    const restaurant = await Restaurant.findOne({ slug: req.params.slug });
+    const restaurant = await Restaurant.findOne({
+      restaurantSlug: req.params.slug,
+    }).populate('restaurantMenu');
 
     if (!restaurant) {
       return res
@@ -60,7 +63,7 @@ exports.updateRestaurant = async (req, res) => {
 
   try {
     const restaurant = await Restaurant.findOneAndUpdate(
-      { slug: req.params.slug },
+      { restaurantSlug: req.params.slug },
       { restaurantName, restaurantCategory, restaurantWebsite },
       { new: true, runValidators: true }
     );
@@ -82,7 +85,7 @@ exports.updateRestaurant = async (req, res) => {
 exports.deleteRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findOneAndRemove({
-      slug: req.params.slug,
+      restaurantSlug: req.params.slug,
     });
 
     if (!restaurant) {
@@ -92,6 +95,70 @@ exports.deleteRestaurant = async (req, res) => {
     }
 
     res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// GET all menu items for a single restaurant
+exports.getMenuItemsForRestaurant = async (req, res) => {
+  try {
+    // GET restaurant by slug
+    let restaurant = await Restaurant.findOne({
+      restaurantSlug: req.params.slug,
+    });
+
+    if (!restaurant) {
+      return res
+        .status(404)
+        .json({ message: 'This Restaurant Does Not Exists' });
+    }
+
+    let foodItems = await FoodItem.find({ restaurant: restaurant });
+
+    if (foodItems.length === 0) {
+      return res
+        .status(404)
+        .json({ message: 'This Restaurant Does Not Have A Menu' });
+    }
+
+    res.status(200).json(foodItems);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// PATCH (update) create a menu item for a single restaurant
+exports.createMenuForRestaurant = async (req, res) => {
+  let { itemTitle, itemDescription, itemPrice } = req.body;
+
+  try {
+    // GET restaurant by slug
+    let restaurant = await Restaurant.findOne({
+      restaurantSlug: req.params.slug,
+    });
+
+    if (!restaurant) {
+      return res
+        .status(404)
+        .json({ message: 'This Restaurant Does Not Exists' });
+    }
+
+    let newMenuItem = new FoodItem({
+      restaurant: restaurant.id,
+      itemTitle,
+      itemDescription,
+      itemPrice,
+    });
+
+    restaurant.restaurantMenu.unshift(newMenuItem);
+
+    await newMenuItem.save();
+    await restaurant.save();
+
+    res.status(201).json({ message: 'FoodItem Created!' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server Error' });

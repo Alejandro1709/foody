@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const foodItemSchema = new mongoose.Schema({
+  restaurant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Restaurant',
+  },
   itemTitle: {
     type: String,
     required: [true, 'Please provide a title for this item'],
