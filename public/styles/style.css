@@ -70,6 +70,7 @@ main {
   display: flex;
   flex-direction: column;
   margin: 2rem;
+  margin: 2rem;
 }
 
 .restaurant-card {
@@ -90,6 +91,9 @@ main {
 }
 
 .inner-card .logo {
+  height: 360px;
+  border-radius: 5px;
+  object-fit: cover;
   height: 360px;
   border-radius: 5px;
   object-fit: cover;
