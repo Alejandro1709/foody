@@ -23,6 +23,12 @@ const restaurantSchema = new mongoose.Schema({
     required: [true, 'Please provide a website for the restaurant'],
     trim: true,
   },
+  restaurantMenu: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FoodItem',
+    },
+  ],
 });
 
 restaurantSchema.pre('save', function () {
